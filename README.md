@@ -89,6 +89,8 @@ Create index.html file importing all the libraries and creating a the div "map"
 	</body>
 </html>
 ```
+In case of troubles, please copy this [file](https://github.com/lucageo/foss4g/blob/master/docs/steps/1/index.html)
+
 ### wdpa_stats.js
 Create wdpa_stats.js file and add the folloing lines:
 
@@ -123,3 +125,4 @@ var baseMaps = {"White" : light, "WorldImagery":WorldImagery};
 ```
 layerControl = L.control.layers(baseMaps, overlayMaps, null,  {position: 'bottomleft'}).addTo(map);
 ```
+In case of troubles, please copy this [file](https://github.com/lucageo/foss4g/blob/master/docs/steps/1/wdpa_stats.js)

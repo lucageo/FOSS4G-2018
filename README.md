@@ -127,3 +127,24 @@ var overlayMaps = {};
 layerControl = L.control.layers(baseMaps, overlayMaps, null,  {position: 'bottomleft'}).addTo(map);
 ```
 *In case of troubles, please copy this [file](https://github.com/lucageo/foss4g/blob/master/docs/steps/1/wdpa_stats.js)*
+
+### Add the WDPA layer to wdpa_stats.js
+
+- Layer connection to geoserver WMS using tileLayer library 
+```
+var url = 'https://localhost:8082/geoserver/foss4g/wms';
+var wdpa = L.tileLayer.wms(url, {
+		layers: 'foss4g:wdpa',
+		transparent: true,
+		format: 'image/png',
+		opacity:'1',
+		zIndex: 33
+	}).addTo(map);
+
+```
+
+- Add the new layer to the available layers
+```
+var overlayMaps = {'wdpa': wdpa};
+
+```	

@@ -119,6 +119,7 @@ var light  = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/lig
 - declare the available layers
 ```
 var baseMaps = {"White" : light, "WorldImagery":WorldImagery};
+var overlayMaps = {};
 ```
 
 - Add Layer Control

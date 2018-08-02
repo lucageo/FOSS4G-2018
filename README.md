@@ -29,9 +29,9 @@ Save pushing 'ESC' and write:
 ### 1) GeoServer styles
 Set up two styles:
 
-1) Protected areas - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_style.xml) (Terrestrial Marine and Costal PAs)
+1) protected_areas - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_style.xml) (Terrestrial Marine and Costal PAs)
 
-2) Protected areas selected - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_select.xml) (White Line)
+2) protected_areas_selected - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_select.xml) (White Line)
 
 ### Connect Postgis with GeoServer
 
@@ -51,5 +51,14 @@ Create a new Store (PostGIS Database type) called 'wdpa_db' with the folloing pa
 - [x] password: user
 
 and publish the WDPA layer.
+
+- Layer Name: wdpa_tanzania
+- Layer Title: wdpa_tanzania
+- Native SRS: 4326
+- Declared SRS: 4326
+
+- Apply the tyle [protected_areas](https://github.com/lucageo/foss4g/blob/master/wdpa_style.xml)
+
+And Save.
 
 

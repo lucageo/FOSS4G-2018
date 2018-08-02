@@ -1,6 +1,9 @@
 # Documentation for the workshop 'Free and Open Source Geospatial Tools for Conservation Planning Workshop' FOSS4G 2018 - Dar Es Salaam
 
-##GeoServer setup for enabling Jsonp
+## Web Gis Application Development
+with the data processed on landcover we are going to develop a small web application that allows users to show, query and interact with geospatial data.
+
+### 1) GeoServer setup for enabling Jsonp
 
 Go to:
 ```
@@ -22,3 +25,10 @@ Save pushing 'ESC'and write:
 :wq!
 ```
 #Reboot the machine
+
+### 1) GeoServer styles
+Set up two styles:
+
+1) Protected areas - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa.xml) (Terrestrial Marine and Costal PAs)
+
+2) Protected areas selected - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_selected.xml) (White Line)

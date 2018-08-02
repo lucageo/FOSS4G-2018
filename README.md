@@ -20,7 +20,7 @@ Uncomment the following lines:
     <param-value>true</param-value>
 </context-param>
 ```
-Save pushing 'ESC'and write:
+Save pushing 'ESC' and write:
 ```
 :wq!
 ```
@@ -32,3 +32,24 @@ Set up two styles:
 1) Protected areas - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_style.xml) (Terrestrial Marine and Costal PAs)
 
 2) Protected areas selected - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_select.xml) (White Line)
+
+### Connect Postgis with GeoServer
+
+Make sure you have a Postgis extension on youy DB, if you dont run the following commands using pgAdim:
+```
+CREATE EXTENSION postgis;
+CREATE EXTENSION postgis_topology;
+```
+Create a new Store (PostGIS Database type) called 'wdpa_db' with the folloing parameters:
+
+- [x] dbtype: postgis
+- [x] host: localhost
+- [x] port: 5432
+- [x] database: postgis
+- [x] schema: public
+- [x] user: user
+- [x] password: user
+
+and publish the WDPA layer.
+
+

@@ -61,4 +61,66 @@ and publish the WDPA layer.
 
 And Save.
 
+### index.html
+Create index.html file importing all the libraries and creating a the div "map"
+```
+<!DOCTYPE HTML>
+<html>
+  <head>
+	<meta charset="utf-8" />
+    <title>FOSS4G DAR ES SALAM - CONSERVATION TOOLS</title>
+	<link rel="stylesheet" href="leaflet.css" />
+	<script src="libraries/leaflet-src.js"></script>
+    <script src="libraries/proj4.js"></script>
+    <script src="libraries/proj4leaflet.js"></script>
+    <script src="libraries/jquery.js"></script>
+    <script src="libraries/highcharts.js"></script>
+    <script src="libraries/highcharts_more.js"></script>
+	<link rel="stylesheet" href="leaflet-example.css" />
+	</head>
+	<body>
+	<div id= 'banner'>
+    <center><h1>Free and Open Source Geospatial Tools for Conservation Planning Workshop</h1></center>
+    <hr>
+	<center><p> Example of a web application using the data produced, integrating various technologies including Postgres, GeoServer, LeafletJs and custom Javascripts.</p></center>
+    </div>
+	<div id="map"></div>
+	<script src="wdpa_stats.js"></script>
+	</body>
+</html>
+```
+### wdpa_stats.js
+Create wdpa_stats.js file and add the folloing lines:
 
+- Initialise map
+```
+var pixel_ratio = parseInt(window.devicePixelRatio) || 1;
+var max_zoom = 16;
+var tile_size = 512;
+var map = L.map('map', {
+}).setView([-7, 38], 6);
+```
+
+- Add the 2 basemaps  
+```
+var WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+ attribution: ''
+});
+var light  = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png', {
+  subdomains: 'abcd',
+  opacity: 1,
+  attribution: '',
+  maxZoom: 19
+}).addTo(map);
+```
+
+- declare the available layers
+```
+var baseMaps = {"White" : light, "WorldImagery":WorldImagery};
+var overlayMaps = {'wdpa': wdpa};
+```
+
+- Add Layer Control
+```
+layerControl = L.control.layers(baseMaps, overlayMaps, null,  {position: 'bottomleft'}).addTo(map);
+```

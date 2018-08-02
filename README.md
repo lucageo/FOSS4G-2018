@@ -29,6 +29,6 @@ Save pushing 'ESC'and write:
 ### 1) GeoServer styles
 Set up two styles:
 
-1) Protected areas - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa.xml) (Terrestrial Marine and Costal PAs)
+1) Protected areas - [xml](foss4g/wdpa_style.xml) (Terrestrial Marine and Costal PAs)
 
-2) Protected areas selected - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_selected.xml) (White Line)
+2) Protected areas selected - [xml](foss4g/wdpa_select.xml) (White Line)

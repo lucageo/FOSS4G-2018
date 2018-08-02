@@ -356,6 +356,17 @@ $('#wdpa_plot_2015').highcharts({
 });
 
 ```
+### Add 2 responsive div to index.html
+
+- in order to render the charts 2 div have to be added next to the div 'map'
+
+```
+    <div class="row">
+    <centre><div id="wdpa_plot_1995" class="col-sm-4"></div>
+    <div id="wdpa_plot_2015" class="col-sm-4"></div></centre>
+    </div>
+```
+
 ### Hide Charts when the popup is closed
 
 - add this 4 lines to the bottom of the script

@@ -3,7 +3,7 @@
 ## Web Gis Application Development
 Step by step documentation for developing a small web application that allows users to show, query and interact with geospatial data.
 
-### 1) GeoServer setup for enabling Jsonp
+### GeoServer setup for enabling Jsonp
 
 Go to:
 ```
@@ -24,9 +24,9 @@ Save pushing 'ESC' and write:
 ```
 :wq!
 ```
-#Reboot the machine
+- [x] Reboot the machine
 
-### 1) GeoServer styles
+### GeoServer styles
 Set up two styles:
 
 1) protected_areas - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_style.xml) (Terrestrial Marine and Costal PAs)

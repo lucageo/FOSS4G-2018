@@ -1,4 +1,4 @@
-# Documentation for the workshop 'Free and Open Source Geospatial Tools for Conservation Planning Workshop' FOSS4G 2018 - Dar Es Salaam
+Free and Open Source Geospatial Tools for Conservation Planning Workshop - FOSS4G 2018 - Dar Es Salaam
 
 ## Web Gis Application Development
 with the data processed on landcover we are going to develop a small web application that allows users to show, query and interact with geospatial data.

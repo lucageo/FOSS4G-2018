@@ -23,12 +23,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
        </ogc:Filter>     
           <PolygonSymbolizer>
             <Fill>
-              <CssParameter name="fill">#5CD6EB</CssParameter>
-              <CssParameter name="fill-opacity">0.8</CssParameter>
+              <CssParameter name="fill">#72b8d5</CssParameter>
+              <CssParameter name="fill-opacity">0.6</CssParameter>
             </Fill>
             <Stroke>
-              <CssParameter name="stroke">#5CD6EB</CssParameter>
-              <CssParameter name="stroke-width">0.1</CssParameter>
+              <CssParameter name="stroke">#72b8d5</CssParameter>
+              <CssParameter name="stroke-width">0</CssParameter>
               <CssParameter name="stroke-opacity">1</CssParameter>
             </Stroke>
           </PolygonSymbolizer>
@@ -44,12 +44,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
        </ogc:Filter>     
           <PolygonSymbolizer>
             <Fill>
-              <CssParameter name="fill">#EEFAFD</CssParameter>
-              <CssParameter name="fill-opacity">0.8</CssParameter>
+              <CssParameter name="fill">#266e83</CssParameter>
+              <CssParameter name="fill-opacity">0.6</CssParameter>
             </Fill>
             <Stroke>
-              <CssParameter name="stroke">#EEFAFD</CssParameter>
-              <CssParameter name="stroke-width">0.1</CssParameter>
+              <CssParameter name="stroke">#266e83</CssParameter>
+              <CssParameter name="stroke-width">0</CssParameter>
               <CssParameter name="stroke-opacity">1</CssParameter>
             </Stroke>
           </PolygonSymbolizer>
@@ -65,13 +65,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
        </ogc:Filter>     
           <PolygonSymbolizer>
             <Fill>
-              <CssParameter name="fill">#234e6f</CssParameter>
+              <CssParameter name="fill">#184c52</CssParameter>
               <CssParameter name="fill-opacity">0.5</CssParameter>
             </Fill>
             <Stroke>
-              <CssParameter name="stroke">#234e6f</CssParameter>
-              <CssParameter name="stroke-width">0.1</CssParameter>
-              <CssParameter name="stroke-opacity">0.5</CssParameter>
+              <CssParameter name="stroke">#184c52</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+              <CssParameter name="stroke-opacity">0.7</CssParameter>
             </Stroke>
           </PolygonSymbolizer>
         </Rule>

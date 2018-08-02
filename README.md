@@ -190,48 +190,48 @@ map.on('click', function(e) {
 
 ### Add Get Feature Info function to wdpa_stats.js
 ```
-	function getFeatureInfoUrl(map, layer, latlng, params) {
+function getFeatureInfoUrl(map, layer, latlng, params) {
 
-	    var point = map.latLngToContainerPoint(latlng, map.getZoom()),
-	        size = map.getSize(),
-	        bounds = map.getBounds(),
-	        sw = bounds.getSouthWest(),
-	        ne = bounds.getNorthEast();
+    var point = map.latLngToContainerPoint(latlng, map.getZoom()),
+	size = map.getSize(),
+	bounds = map.getBounds(),
+	sw = bounds.getSouthWest(),
+	ne = bounds.getNorthEast();
 
-	    var defaultParams = {
-	        request: 'GetFeatureInfo',
-	        service: 'WMS',
-	        srs: 'EPSG:4326',
-	        styles: '',
-	        version: layer._wmsVersion,
-	        format: layer.options.format,
-	        bbox: bounds.toBBoxString(),
-	        height: size.y,
-	        width: size.x,
-	        layers: layer.options.layers,
-	        info_format: 'text/javascript'
-	    };
+    var defaultParams = {
+	request: 'GetFeatureInfo',
+	service: 'WMS',
+	srs: 'EPSG:4326',
+	styles: '',
+	version: layer._wmsVersion,
+	format: layer.options.format,
+	bbox: bounds.toBBoxString(),
+	height: size.y,
+	width: size.x,
+	layers: layer.options.layers,
+	info_format: 'text/javascript'
+    };
 
-	    params = L.Util.extend(defaultParams, params || {});
-	    params[params.version === '1.3.0' ? 'i' : 'x'] = point.x;
-	    params[params.version === '1.3.0' ? 'j' : 'y'] = point.y;
-	    return layer._url + L.Util.getParamString(params, layer._url, true);
-	}
+    params = L.Util.extend(defaultParams, params || {});
+    params[params.version === '1.3.0' ? 'i' : 'x'] = point.x;
+    params[params.version === '1.3.0' ? 'j' : 'y'] = point.y;
+    return layer._url + L.Util.getParamString(params, layer._url, true);
+}
 
 ```
 
 ### Add WDPA selection layer to wdpa_stats.js and set a CQL filter
 
 ```
-	var url = 'https://lrm-maps.jrc.ec.europa.eu/geoserver/dopa_explorer_2/wms';
-	var wdpa_hi=L.tileLayer.wms(url, {
-		  layers: 'dopa_explorer_2:wdpa_foss4g',
-			transparent: true,
-			format: 'image/png',
-			opacity:'1',
-			styles: 'polygon',
-			zIndex: 44
-	 }).addTo(map);
+var url = 'https://lrm-maps.jrc.ec.europa.eu/geoserver/dopa_explorer_2/wms';
+var wdpa_hi=L.tileLayer.wms(url, {
+	  layers: 'dopa_explorer_2:wdpa_foss4g',
+		transparent: true,
+		format: 'image/png',
+		opacity:'1',
+		styles: 'polygon',
+		zIndex: 44
+ }).addTo(map);
 wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
 ```
 ### Popup configuration  
@@ -361,7 +361,7 @@ $('#wdpa_plot_2015').highcharts({
 - add this 4 lines to the bottom of the script
 
 ```
-map.on('popupclose', function (){ //map is the name of map you gave to your leaflet map
+map.on('popupclose', function (){
 	$( "#wdpa_plot_1995" ).hide();
 	$( "#wdpa_plot_2015" ).hide();
 });

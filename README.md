@@ -5,9 +5,9 @@ Step by step documentation for developing a small web application that allows us
 
 ____________________________________________________________________________________
 
-[GeoServer setup for enabling Jsonp](#geoserver-setup-for-enabling-jsonp)
-[GeoServer styles](#geoserver-styles)
-[Connect Postgis with GeoServer](#connect-postgis-with-geoserver)
+- [GeoServer setup for enabling Jsonp](#geoserver-setup-for-enabling-jsonp)
+- [GeoServer styles](#geoserver-styles)
+- [Connect Postgis with GeoServer](#connect-postgis-with-geoserver)
 _____________________________________________________________________________________
 ### GeoServer setup for enabling Jsonp
 

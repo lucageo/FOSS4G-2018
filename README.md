@@ -3,6 +3,12 @@
 ## Web Gis Application Development
 Step by step documentation for developing a small web application that allows users to show, query and interact with geospatial data.
 
+____________________________________________________________________________________
+
+[GeoServer setup for enabling Jsonp](#geoserver-setup-for-enabling-jsonp)
+[GeoServer styles](#geoserver-styles)
+[Connect Postgis with GeoServer](#connect-postgis-with-geoserver)
+_____________________________________________________________________________________
 ### GeoServer setup for enabling Jsonp
 
 Go to:

@@ -406,8 +406,8 @@ $( "#wdpa_plot_2015" ).show();
 ```
 
 ### Add Land Cover Change Chart (1995-2015)
-```
 
+```
 var base_url_services = 'https://dopa-services.jrc.ec.europa.eu/services/d6dopa'
 var url_wdpaid_lcc = base_url_services+'/landcover/get_wdpa_lcc_esa?format=json&wdpaid=' + wdpaid;
   $.ajax({

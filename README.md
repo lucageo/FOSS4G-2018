@@ -8,6 +8,17 @@ ________________________________________________________________________________
 - [GeoServer setup for enabling Jsonp](#geoserver-setup-for-enabling-jsonp)
 - [GeoServer styles](#geoserver-styles)
 - [Connect Postgis with GeoServer](#connect-postgis-with-geoserver)
+
+- [index.html](#indexhtml)
+- [wdpa_stats.js](#wdpa_statsjs)
+- [Add the WDPA layer to wdpa_stats.js](#add-the-wdpa-layer-to-wdpa_statsjs)
+- [Add Get Feature Info function to wdpa_stats.js](#add-on-click-interaction-with-the-layer-to-wdpa_statsjs)
+- [Add WDPA selection layer to wdpa_stats.js and set a CQL filter](#add-wdpa-selection-layer-to-wdpa_statsjs-and-set-a-cql-filter)
+- [Popup configuration](#popup-configuration)
+- [Add Charts](#add-charts)
+- [Add 2 responsive div to index.html](#add-2-responsive-div-to-indexhtml)
+- [Hide Charts when the popup is closed](#hide-charts-when-the-popup-is-closed)
+
 _____________________________________________________________________________________
 ### GeoServer setup for enabling Jsonp
 

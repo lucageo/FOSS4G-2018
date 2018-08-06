@@ -404,3 +404,61 @@ map.on('popupclose', function (){
 $( "#wdpa_plot_1995" ).show();
 $( "#wdpa_plot_2015" ).show();
 ```
+
+### Add Land Cover Change Chart (1995-2015)
+```
+
+var base_url_services = 'https://dopa-services.jrc.ec.europa.eu/services/d6dopa'
+var url_wdpaid_lcc = base_url_services+'/landcover/get_wdpa_lcc_esa?format=json&wdpaid=' + wdpaid;
+  $.ajax({
+	      url: url_wdpaid_lcc,
+	      dataType: 'json',
+	      success: function(d) {
+		if (d.metadata.recordCount == 0) {
+		jQuery('#sankey_basic').html('<p>No Data</p>');
+		} else {
+		var lc1_1995;
+		var lc2_2015;
+		var area;
+		var obj_array_lcc = [];
+
+		$(d.records).each(function(i, data) {
+		       lc1_1995=data.lc1_1995;
+		       lc2_2015=data.lc2_2015;
+		       area=data.area;
+		       obj_array_lcc.push([data.lc1_1995,data.lc2_2015,data.area]);
+		});
+		   google.charts.load('current', {'packages':['sankey']});
+			 google.charts.setOnLoadCallback(drawChart);
+		   function drawChart() {
+		   var data = new google.visualization.DataTable();
+		   data.addColumn('string', 'From');
+		   data.addColumn('string', 'To');
+		   data.addColumn('number', 'Area (km2)');
+		   data.addRows(obj_array_lcc);
+		   var colors = ['#538135', '#bf8f00', '#c45911', '#2f5496','#bf8f00','#538135', '#c45911', '#2f5496' ];
+		   var options = {
+		     width: 410,
+		     height: 300,
+		     sankey: {
+			node: {
+			  colors: colors,
+			  interactivity: true,
+			  labelPadding: 2,
+			  width: 5,
+			  nodePadding: 10
+			},
+			link: {colorMode: 'gradient', colors: colors }
+		      }
+		   };
+
+		if (obj_array_lcc[0][2] == 0.00001 && obj_array_lcc[1][2] == 0.00001 && obj_array_lcc[2][2] == 0.00001 && obj_array_lcc[3][2] == 0.00001 && obj_array_lcc[4][2] == 0.00001 && obj_array_lcc[5][2] == 0.00001 ) {
+		jQuery('#lcc_div').html('<br><p align="center!important">No Land Cover Change occurred in this WDPA </p><hr><br><br>');
+		}else{
+		var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+		chart.draw(data, options);
+		}
+	 }
+      }
+   },
+});

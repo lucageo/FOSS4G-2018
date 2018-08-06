@@ -93,6 +93,7 @@ Create index.html file importing all the libraries and creating a the div "map"
     <script src="libraries/jquery.js"></script>
     <script src="libraries/highcharts.js"></script>
     <script src="libraries/highcharts_more.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<link rel="stylesheet" href="leaflet-example.css" />
 	</head>
 	<body>

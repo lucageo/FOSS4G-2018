@@ -266,7 +266,7 @@ layerControl = L.control.layers(baseMaps, overlayMaps, null,  {position: 'bottom
 ```
 var url = 'https://localhost:8082/geoserver/foss4g/wms';
 var wdpa = L.tileLayer.wms(url, {
-		layers: 'foss4g:wdpa',
+		layers: 'foss4g:pa_lc_1995_2015',
 		transparent: true,
 		format: 'image/png',
 		opacity:'1',
@@ -293,8 +293,8 @@ map.on('click', function(e) {
 				e.latlng,
 			{
 			'info_format': 'text/javascript',  //it allows us to get a jsonp
-			'propertyName': ' wdpa_name,wdpaid,rep_area',
-			'query_layers': 'dopa_explorer_2:wdpa_foss4g',
+			'propertyName': ' wdpa_name,wdpaid',
+			'query_layers': 'dopa_explorer_2:pa_lc_1995_2015',
 			'format_options':'callback:getJson'
 			}
 			);
@@ -357,7 +357,7 @@ function getFeatureInfoUrl(map, layer, latlng, params) {
 ```
 var url = 'https://lrm-maps.jrc.ec.europa.eu/geoserver/dopa_explorer_2/wms';
 var wdpa_hi=L.tileLayer.wms(url, {
-	  layers: 'dopa_explorer_2:wdpa_foss4g',
+	  layers: 'dopa_explorer_2:pa_lc_1995_2015',
 		transparent: true,
 		format: 'image/png',
 		opacity:'1',
@@ -415,21 +415,21 @@ $('#wdpa_plot_1995').highcharts({
 	series:[{
 	name: 'Cultivated / managed land',
 	color: '#eecd05',
-	data: [rep_area ]
+	data: [1995_cul]
 	},
 	{
 	name: 'Mosaic natural / managed land',
 	color: '#ee6305',
-	data: [rep_area ]
+	data: [1995_man]
 	},
 	{
 	name: 'Natural / semi-natural land',
 	color: '#11640e',
-	data: [rep_area ]
+	data: [1995_nat]
 	},{
 	name: 'Water / snow and ice',
 	color: '#0e4664',
-	data: [rep_area ]
+	data: [1995_wat]
 	}
 	]
 });
@@ -468,21 +468,21 @@ $('#wdpa_plot_2015').highcharts({
 	series:[{
 	name: 'Cultivated / managed land',
 	color: '#eecd05',
-	data: [rep_area ]
+	data: [2015_cul]
 	},
 	{
 	name: 'Mosaic natural / managed land',
 	color: '#ee6305',
-	data: [rep_area ]
+	data: [2015_man]
 	},
 	{
 	name: 'Natural / semi-natural land',
 	color: '#11640e',
-	data: [rep_area ]
+	data: [2015_nat]
 	},{
 	name: 'Water / snow and ice',
 	color: '#0e4664',
-	data: [rep_area ]
+	data: [2015_wat]
 	}
 	]
 });

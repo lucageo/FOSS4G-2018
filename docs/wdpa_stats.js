@@ -39,9 +39,9 @@ map.on('click', function(e) {
 										wdpa_tanzania,
 										e.latlng,
 										{
-												'info_format': 'text/javascript',  
-												'propertyName': ' name,wdpaid,rep_area',
-												'query_layers': 'cite:wdpa_tanzania',
+												'info_format': 'text/javascript',
+												'propertyName': ' name,wdpaid,_1995_nat,_1995_man,_1995_cul,_1995_wat,_2015_nat,_2015_man,_2015_cul,_2015_wat,',
+												'query_layers': 'geonode:pa_lc_1995_2015',
 												'format_options':'callback:getJson'
 										}
 								);
@@ -69,9 +69,9 @@ map.on('click', function(e) {
 });
 
 // wdpa layer
-var url = 'http://localhost:8082/geoserver/cite/wms';
+var url = 'http://localhost:8082/geoserver/foss4g/wms';
 var wdpa_tanzania=L.tileLayer.wms(url, {
-		layers: 'cite:wdpa_tanzania',
+		layers: 'geonode:pa_lc_1995_2015',
 		transparent: true,
 		format: 'image/png',
 		opacity:'1',
@@ -109,9 +109,9 @@ var wdpa_tanzania=L.tileLayer.wms(url, {
 	}
 
 // wdpa HIGLIGHTED
-	var url = 'http://localhost:8082/geoserver/cite/wms';
+	var url = 'http://localhost:8082/geoserver/foss4g/wms';
 	var wdpa_hi=L.tileLayer.wms(url, {
-		  layers: 'cite:wdpa_tanzania',
+		  layers: 'geonode:pa_lc_1995_2015',
 			transparent: true,
 			format: 'image/png',
 			opacity:'1',
@@ -121,10 +121,16 @@ var wdpa_tanzania=L.tileLayer.wms(url, {
 wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
 
 	 function hi_highcharts_wdpa(info,latlng){
-		 var name=info['name'];
-		 var wdpaid=info['wdpaid'];
-		 var rep_area=info['rep_area'];
-
+		 var name      = info['name'];
+		 var wdpaid    = info['wdpaid'];
+     var _1995_nat = info['_1995_nat'];
+     var _1995_man = info['_1995_man'];
+     var _1995_cul = info['_1995_cul'];
+     var _1995_wat = info['_1995_wat'];
+     var _2015_nat = info['_2015_nat'];
+     var _2015_man = info['_2015_man'];
+     var _2015_cul = info['_2015_cul'];
+     var _2015_wat = info['_2015_wat'];
 
 			var popupContent = '<center><p>'+name+'</p></center>';
 			var popup = L.popup()
@@ -172,21 +178,21 @@ wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
 		  series:[{
 								name: 'Cultivated / managed land',
 								color: '#eecd05',
-								data: [rep_area ]
+								data: [_1995_cul ]
 							},
 							{
 								name: 'Mosaic natural / managed land',
 								color: '#ee6305',
-								data: [rep_area ]
+								data: [_1995_man ]
 							},
 							{
 								name: 'Natural / semi-natural land',
 								color: '#11640e',
-								data: [rep_area ]
+								data: [_1995_nat ]
 							},{
 								name: 'Water / snow and ice',
 								color: '#0e4664',
-								data: [rep_area ]
+								data: [_1995_wat ]
 							}
 						]
 		 });
@@ -226,20 +232,26 @@ wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
 
 		 				 },
 
-		 			 series: [{
-		 								 name: 'Land Cover Classes',
-		 								 data: [
-		 									     ['Cultivated / managed land', parseFloat(Math.round(rep_area*100)/100)],
-		 											 ['Mosaic natural / managed land', parseFloat(Math.round(rep_area*100)/100)],
-		 											 ['Natural / semi-natural land', parseFloat(Math.round(rep_area*100)/100)],
-		 											 ['Water / snow and ice', parseFloat(Math.round(rep_area*100)/100)]
-		 										   ],
-		 											 negativeColor: '#efaa17'
-
-		 							 }]
-
-
-
+             series:[{
+       								name: 'Cultivated / managed land',
+       								color: '#eecd05',
+       								data: [_2015_cul ]
+       							},
+       							{
+       								name: 'Mosaic natural / managed land',
+       								color: '#ee6305',
+       								data: [_2015_man ]
+       							},
+       							{
+       								name: 'Natural / semi-natural land',
+       								color: '#11640e',
+       								data: [_2015_nat ]
+       							},{
+       								name: 'Water / snow and ice',
+       								color: '#0e4664',
+       								data: [_12015_wat ]
+       							}
+       						]
 
 		 		 });
 
@@ -249,10 +261,6 @@ map.on('popupclose', function (){ //map is the name of map you gave to your leaf
 	$( "#wdpa_plot_1995" ).hide();
 	$( "#wdpa_plot_2015" ).hide();
 });
-
-
-
-
 
 
 //Available Layers

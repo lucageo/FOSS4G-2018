@@ -67,10 +67,10 @@ Create a new Store (PostGIS Database type) called 'wdpa_db' with the folloing pa
 - [x] user: user
 - [x] password: user
 
-and publish the WDPA layer.
+and publish the pa_lc_1995_2015 layer.
 
-- Layer Name: wdpa_tanzania
-- Layer Title: wdpa_tanzania
+- Layer Name: pa_lc_1995_2015
+- Layer Title: pa_lc_1995_2015
 - Native SRS: 4326
 - Declared SRS: 4326
 
@@ -277,7 +277,7 @@ var wdpa = L.tileLayer.wms(url, {
 
 - Add the new layer to the available layers
 ```
-var overlayMaps = {'wdpa': wdpa};
+var overlayMaps = {'Protected Areas': wdpa};
 
 ```
 
@@ -294,7 +294,7 @@ map.on('click', function(e) {
 			{
 			'info_format': 'text/javascript',  //it allows us to get a jsonp
 			'propertyName': ' wdpa_name,wdpaid',
-			'query_layers': 'dopa_explorer_2:pa_lc_1995_2015',
+			'query_layers': 'foss4g:pa_lc_1995_2015',
 			'format_options':'callback:getJson'
 			}
 			);
@@ -355,13 +355,13 @@ function getFeatureInfoUrl(map, layer, latlng, params) {
 ### Add WDPA selection layer to wdpa_stats.js and set a CQL filter
 
 ```
-var url = 'https://lrm-maps.jrc.ec.europa.eu/geoserver/dopa_explorer_2/wms';
+var url = 'https://localhost:8082/geoserver/foss4g/wms';
 var wdpa_hi=L.tileLayer.wms(url, {
-	  layers: 'dopa_explorer_2:pa_lc_1995_2015',
+	  layers: 'foss4g:pa_lc_1995_2015',
 		transparent: true,
 		format: 'image/png',
 		opacity:'1',
-		styles: 'polygon',
+		styles: 'protected_areas_selected',
 		zIndex: 44
  }).addTo(map);
 wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
@@ -370,9 +370,16 @@ wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
 
 ```
  function hi_highcharts_wdpa(info,latlng){
-	var wdpa_name=info['wdpa_name'];
-	var wdpaid=info['wdpaid'];
-	var rep_area=info['rep_area'];
+     var name      = info['name'];
+     var wdpaid    = info['wdpaid'];
+     var _1995_nat = info['_1995_nat'];
+     var _1995_man = info['_1995_man'];
+     var _1995_cul = info['_1995_cul'];
+     var _1995_wat = info['_1995_wat'];
+     var _2015_nat = info['_2015_nat'];
+     var _2015_man = info['_2015_man'];
+     var _2015_cul = info['_2015_cul'];
+     var _2015_wat = info['_2015_wat'];
 	var popupContent = '<center><h5>'+wdpa_name+'</h5></center>';
 	var popup = L.popup()
 			 .setLatLng([latlng.lat, latlng.lng])
@@ -415,21 +422,21 @@ $('#wdpa_plot_1995').highcharts({
 	series:[{
 	name: 'Cultivated / managed land',
 	color: '#eecd05',
-	data: [1995_cul]
+	data: [_1995_cul]
 	},
 	{
 	name: 'Mosaic natural / managed land',
 	color: '#ee6305',
-	data: [1995_man]
+	data: [_1995_man]
 	},
 	{
 	name: 'Natural / semi-natural land',
 	color: '#11640e',
-	data: [1995_nat]
+	data: [_1995_nat]
 	},{
 	name: 'Water / snow and ice',
 	color: '#0e4664',
-	data: [1995_wat]
+	data: [_1995_wat]
 	}
 	]
 });
@@ -468,21 +475,21 @@ $('#wdpa_plot_2015').highcharts({
 	series:[{
 	name: 'Cultivated / managed land',
 	color: '#eecd05',
-	data: [2015_cul]
+	data: [_2015_cul]
 	},
 	{
 	name: 'Mosaic natural / managed land',
 	color: '#ee6305',
-	data: [2015_man]
+	data: [_2015_man]
 	},
 	{
 	name: 'Natural / semi-natural land',
 	color: '#11640e',
-	data: [2015_nat]
+	data: [_2015_nat]
 	},{
 	name: 'Water / snow and ice',
 	color: '#0e4664',
-	data: [2015_wat]
+	data: [_2015_wat]
 	}
 	]
 });

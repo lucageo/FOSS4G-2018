@@ -43,18 +43,20 @@ Make sure you have a Postgis extension on your DB, if you don't, please run the 
 CREATE EXTENSION postgis;
 CREATE EXTENSION postgis_topology;
 ```
+
 - Create a new workspace called 'foss4g'
 
 - Create a new Store (PostGIS Database type) called 'wdpa_db' with the folloing parameters:
 
-- [x] dbtype: postgis
-- [x] host: localhost
-- [x] port: 5432
-- [x] database: postgres
-- [x] schema: public
-- [x] user: user
-- [x] password: user
-
+```
+dbtype: postgis
+host: localhost
+port: 5432
+database: postgres
+schema: public
+user: user
+password: user
+```
 and publish the wdpa layer.
 
 - Layer Name: wdpa

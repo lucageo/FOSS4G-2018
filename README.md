@@ -36,7 +36,7 @@ Set up two styles:
 
 ### Connect Postgis with GeoServer
 
-Make sure you have a Postgis extension on youy DB, if you dont run the following commands using pgAdim:
+Make sure you have a Postgis extension on your DB, if you don't, please run the following commands using pgAdim:
 ```
 CREATE EXTENSION postgis;
 CREATE EXTENSION postgis_topology;

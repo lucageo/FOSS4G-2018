@@ -66,7 +66,11 @@ and publish the wdpa layer.
 
 And Save.
 
-### index.html
+### REST services Development
+
+Plase download all the files, place them in a local folder and follow the intructions [here](https://github.com/lucageo/Python_rest_services)
+
+### Create the index.html file
 Create index.html file importing all the libraries and creating a the div "map"
 ```
 <!DOCTYPE HTML>

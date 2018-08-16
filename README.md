@@ -78,26 +78,31 @@ Create index.html file importing all the libraries and creating a the div "map"
 <!DOCTYPE HTML>
 <html>
   <head>
-	<meta charset="utf-8" />
+   <meta charset="utf-8" />
     <title>FOSS4G DAR ES SALAM - CONSERVATION TOOLS</title>
-	<link rel="stylesheet" href="leaflet.css" />
-	<script src="libraries/leaflet-src.js"></script>
-    <script src="libraries/proj4.js"></script>
-    <script src="libraries/proj4leaflet.js"></script>
-    <script src="libraries/jquery.js"></script>
-    <script src="libraries/highcharts.js"></script>
-    <script src="libraries/highcharts_more.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<link rel="stylesheet" href="leaflet-example.css" />
+
+		<!-- include leaflet css and javascript -->
+		    <link rel="stylesheet" href="css/leaflet.css" />
+		    <script src="libraries/leaflet-src.js"></script>
+		    <script src="libraries/proj4.js"></script>
+		    <script src="libraries/proj4leaflet.js"></script>
+		    <script src="libraries/jquery.js"></script>
+		    <script src="libraries/highcharts.js"></script>
+		    <script src="libraries/highcharts_more.js"></script>
+		<!-- include our own css -->
+		<link rel="stylesheet" href="css/custom.css" />
+		<!-- we include the javascript at the bottom, see below -->
 	</head>
+
 	<body>
-	<div id= 'banner'>
-    <center><h1>Free and Open Source Geospatial Tools for Conservation Planning Workshop</h1></center>
-    <hr>
-	<center><p> Example of a web application using the data produced, integrating various technologies including Postgres, GeoServer, LeafletJs and custom Javascripts.</p></center>
+		<div id= 'banner'>
+      <center><h1>Free and Open Source Geospatial Tools for Conservation Planning Workshop</h1></center>
+      <hr>
+	    <center><p> Example of a web application using the data produced, integrating various technologies including Postgres, GeoServer, LeafletJs and custom Javascripts.</p></center>
     </div>
-	<div id="map"></div>
-	<script src="wdpa_stats.js"></script>
+    <div id="map"></div>
+		<!-- include our own javascript -->
+		<script src="wdpa_stats.js"></script>
 	</body>
 </html>
 ```

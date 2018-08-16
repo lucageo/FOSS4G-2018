@@ -10,18 +10,19 @@
     <Name>default_polygon</Name>
     <UserStyle>
     <!-- Styles can have names, titles and abstracts -->
-      <Title>Default Polygon</Title>
-      <Abstract>A sample style that draws a polygon</Abstract>
+      <Title>PROTECTED AREAS STYLE</Title>
+      <Abstract>A style for protected areas</Abstract>
       <!-- FeatureTypeStyles describe how to render different features -->
       <!-- A FeatureTypeStyle for rendering polygons -->
       <FeatureTypeStyle>
         <Rule>
           <Name>rule1</Name>
-          <Title>Gray Polygon with Black Outline</Title>
-          <Abstract>A polygon with a gray fill and a 1 pixel black outline</Abstract>
+          <Title>PROTECTED AREAS ALL Tanzania</Title>
+          <Abstract>Tanzania PAs</Abstract>
           <PolygonSymbolizer>
             <Fill>
-              <CssParameter name="fill">#AAAAAA</CssParameter>
+              <CssParameter name="fill">#7CC576</CssParameter>
+             <CssParameter name="fill-opacity">0.5</CssParameter>
             </Fill>
             <Stroke>
               <CssParameter name="stroke">#000000</CssParameter>

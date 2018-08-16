@@ -70,6 +70,8 @@ And Save.
 
 Plase download all the files, place them in a local folder and follow the intructions [here](https://github.com/lucageo/Python_rest_services)
 
+
+
 ### Create the index.html file
 Create index.html file importing all the libraries and creating a the div "map"
 ```
@@ -102,7 +104,7 @@ Create index.html file importing all the libraries and creating a the div "map"
 *In case of troubles, please copy this [file](https://github.com/lucageo/foss4g/blob/master/docs/steps/1/index.html)*
 
 
-### CSS
+### Copy the following CSS in foss4g/docs/css/custom.css
 
 ```
 #map {
@@ -220,44 +222,55 @@ Create wdpa_stats.js file and add the folloing lines:
 
 - Initialise map
 ```
+//Initialise map
 var pixel_ratio = parseInt(window.devicePixelRatio) || 1;
+
 var max_zoom = 16;
 var tile_size = 512;
+
 var map = L.map('map', {
 }).setView([-7, 38], 6);
 ```
 
 - Add the 2 basemaps  
 ```
-var WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
- attribution: ''
+// Baselayers
+var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+ attribution: 'October 2017 version of the World Database on Protected Areas (WDPA)'
 });
 var light  = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_nolabels/{z}/{x}/{y}.png', {
   subdomains: 'abcd',
   opacity: 1,
-  attribution: '',
+  attribution: 'October 2017 version of the World Database on Protected Areas (WDPA)',
+  maxZoom: 19
+}).addTo(map);
+var topLayer =  L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_only_labels/{z}/{x}/{y}.png', {
+  subdomains: 'abcd',
+  opacity: 1,
   maxZoom: 19
 }).addTo(map);
 ```
 
 - declare the available layers
 ```
-var baseMaps = {"White" : light, "WorldImagery":WorldImagery};
+//Available Layers
+var baseMaps = {"White" : light, "Esri_WorldImagery":Esri_WorldImagery};
 var overlayMaps = {};
 ```
 
 - Add Layer Control
 ```
+//Add Layer Control
 layerControl = L.control.layers(baseMaps, overlayMaps, null,  {position: 'bottomleft'}).addTo(map);
 ```
-*In case of troubles, please copy this [file](https://github.com/lucageo/foss4g/blob/master/docs/steps/1/wdpa_stats.js)*
 
 ### Add the WDPA layer to wdpa_stats.js
 
 - Layer connection to geoserver WMS using tileLayer library 
 ```
-var url = 'https://localhost:8082/geoserver/foss4g/wms';
-var wdpa = L.tileLayer.wms(url, {
+// wdpa layer
+var url = 'http://localhost:8082/geoserver/foss4g/wms';
+var wdpa=L.tileLayer.wms(url, {
 		layers: 'foss4g:wdpa',
 		transparent: true,
 		format: 'image/png',
@@ -271,51 +284,54 @@ var wdpa = L.tileLayer.wms(url, {
 ```
 
 var baseMaps = {"White" : light, "Esri_WorldImagery":Esri_WorldImagery};
-var overlayMaps = {'wdpa': wdpa};
+var overlayMaps = {'Protected Areas': wdpa};
 
 ```
 
 ### Add on click interaction with the layer to wdpa_stats.js
 
 ```
+// on click function
 map.on('click', function(e) {
 	 if (map.hasLayer(wdpa)) {
 		var latlng= e.latlng;
 		var url = getFeatureInfoUrl(
-				map,
-				wdpa,
-				e.latlng,
-			{
-			'info_format': 'text/javascript',  //it allows us to get a jsonp
-			'propertyName': 'name,wdpaid',
-			'query_layers': 'foss4g:wdpa',
-			'format_options':'callback:getJson'
-			}
+					map,
+					wdpa,
+					e.latlng,
+					{
+					'info_format': 'text/javascript',  
+					'propertyName': ' name,wdpaid',
+					'query_layers': 'foss4g:wdpa ',
+					'format_options':'callback:getJson'
+					}
 			);
-	 $.ajax({
-		 jsonp: false,
-		 url: url,
-		 dataType: 'jsonp',
-		 jsonpCallback: 'getJson',
-		 success: handleJson_featureRequest
-		 });
-		function handleJson_featureRequest(data)
-		{
-			if (typeof data.features[0]!=='undefined'){
+			 $.ajax({
+				 jsonp: false,
+				 url: url,
+				 dataType: 'jsonp',
+				 jsonpCallback: 'getJson',
+				 success: handleJson_featureRequest
+			 });
+			function handleJson_featureRequest(data)
+			{
+			if (typeof data.features[0]!=='undefined')
+				{
 				var prop=data.features[0].properties;
 				var filter="wdpaid='"+prop['wdpaid']+"'";
 				wdpa_hi.setParams({CQL_FILTER:filter});
 				hi_highcharts_wdpa(prop,latlng);
-			}
-			else {}
-		}
-	}
-        else {}
+				}
+				else {}
+				}
+			 }
+			 else {}
 });
 ```
 
 ### Add Get Feature Info function to wdpa_stats.js
 ```
+// get feature info function
 function getFeatureInfoUrl(map, layer, latlng, params) {
 
     var point = map.latLngToContainerPoint(latlng, map.getZoom()),
@@ -349,35 +365,22 @@ function getFeatureInfoUrl(map, layer, latlng, params) {
 ### Add WDPA selection layer to wdpa_stats.js and set a CQL filter
 
 ```
-var url = 'https://localhost:8082/geoserver/foss4g/wms';
+// wdpa HIGLIGHTED
+var url = 'http://localhost:8082/geoserver/foss4g/wms';
 var wdpa_hi=L.tileLayer.wms(url, {
-	  layers: 'foss4g:wdpa',
-		transparent: true,
-		format: 'image/png',
-		opacity:'1',
-		styles: 'protected_areas_selected',
-		zIndex: 44
+	layers: 'foss4g:wdpa',
+	transparent: true,
+	format: 'image/png',
+	opacity:'1',
+	styles: 'protected_areas_selected ',
+	zIndex: 44
  }).addTo(map);
 wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
 ```
-### Popup configuration  
+### Popup configuration and charts config
 
 ```
- function hi_highcharts_wdpa(info,latlng){
-     var name      = info['name'];
-     var wdpaid    = info['wdpaid'];
-	var popupContent = '<center><h5>'+name+'</h5></center>';
-	var popup = L.popup()
-			 .setLatLng([latlng.lat, latlng.lng])
-			 .setContent(popupContent)
-			 .openOn(map);
- }
-```
-
-### Add Charts and Popup
-
-- Land Cover 1995 -2015
-```
+// charts function
 function hi_highcharts_wdpa(info,latlng){
  var name=info['name'];
  var wdpaid=info['wdpaid'];
@@ -393,7 +396,6 @@ function hi_highcharts_wdpa(info,latlng){
 
 // Land Cover Change (1995-2015)
 var url_wdpaid_lcc = 'http://localhost:8888/rest.py?type=fun&schema=public&obj=get_pa_lc_1995_2015&params=(wdpaid:'+wdpaid+')';
-  //console.log(url_wdpaid_lcc);
   $.ajax({
 	      url: url_wdpaid_lcc,
 	      dataType: 'json',
@@ -504,21 +506,6 @@ var url_wdpaid_lcc = 'http://localhost:8888/rest.py?type=fun&schema=public&obj=g
 
 }
 
-
-```
-### Add 2 responsive div to index.html
-
-- in order to render the charts 2 div have to be added next to the div 'map'
-
-```
-    <div class="row1">
-    <center><div id="wdpa_plot_1995_title" class="col-sm-6"> Land Cover 1995</div></center>
-    <center><div id="wdpa_plot_2015_title" class="col-sm-6">Land Cover 2015</div></center>
-    </div>
-    <div class="row">
-    <center><div id="wdpa_plot_1995" class="col-sm-6"></div></center>
-    <center><div id="wdpa_plot_2015" class="col-sm-6"></div></center>
-    </div>
 ```
 
 ### Hide Charts when the popup is closed
@@ -532,12 +519,18 @@ map.on('popupclose', function (){
 });
 ```
 
-### Hide Charts when the popup is closed
+### Add 2 responsive div to index.html
 
-- add this 2 lines to script, after 'hi_highcharts_wdpa' function
+- in order to render the charts 2 div have to be added next to the div 'map'
 
 ```
-$( "#wdpa_plot_1995" ).show();
-$( "#wdpa_plot_2015" ).show();
+    <div class="row1">
+    <center><div id="wdpa_plot_1995_title" class="col-sm-6"> Land Cover 1995</div></center>
+    <center><div id="wdpa_plot_2015_title" class="col-sm-6">Land Cover 2015</div></center>
+    </div>
+    <div class="row">
+    <center><div id="wdpa_plot_1995" class="col-sm-6"></div></center>
+    <center><div id="wdpa_plot_2015" class="col-sm-6"></div></center>
+    </div>
 ```
 

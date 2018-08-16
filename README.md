@@ -263,7 +263,9 @@ var wdpa = L.tileLayer.wms(url, {
 
 - Add the new layer to the available layers
 ```
-var overlayMaps = {'Protected Areas': wdpa};
+
+var baseMaps = {"White" : light, "Esri_WorldImagery":Esri_WorldImagery};
+var overlayMaps = {'wdpa': wdpa};
 
 ```
 
@@ -366,111 +368,136 @@ wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
  }
 ```
 
-### Add Charts 
+### Add Charts and Popup
 
-- Land Cover 1995
+- Land Cover 1995 -2015
 ```
-$('#wdpa_plot_1995').highcharts({
-	chart: {type:'column', height: 300,
-	backgroundColor:'rgba(255, 255, 255, 0)',
-	legend: {enabled: false}
-	},
-	colors: ['#0e4664', '#ee6305', '#11640e', '#eecd05'],
-	title: {text: null},
-	subtitle: {text: 'Land Cover 1995'},
-	credits: {
-		enabled: false,
-		text: '',
-		href: ''
-	},
+function hi_highcharts_wdpa(info,latlng){
+ var name=info['name'];
+ var wdpaid=info['wdpaid'];
+ var popupContent = '<center><h5>'+name+'</h5></center>';
+ var popup = L.popup()
+	.setLatLng([latlng.lat, latlng.lng])
+	.setContent(popupContent)
+	.openOn(map);
+	$( "#wdpa_plot_1995" ).show();
+	$( "#wdpa_plot_2015" ).show();
+	$( "#wdpa_plot_1995_title" ).show();
+	$( "#wdpa_plot_2015_title" ).show();
+
+// Land Cover Change (1995-2015)
+var url_wdpaid_lcc = 'http://localhost:8888/rest.py?type=fun&schema=public&obj=get_pa_lc_1995_2015&params=(wdpaid:'+wdpaid+')';
+  //console.log(url_wdpaid_lcc);
+  $.ajax({
+	      url: url_wdpaid_lcc,
+	      dataType: 'json',
+	      success: function(d) {
+  		             var _1995_man;
+  		             var _1995_nat;
+  		             var _1995_wat;
+  		             var _1995_cul;
+                             var _2015_man;
+  		             var _2015_nat;
+  		             var _2015_wat;
+  		             var _2015_cul;
+                             var name;
+
+                   $(d).each(function(i, data) {
+                    _1995_man = parseFloat(data._1995_man);
+                    _1995_nat = parseFloat(data._1995_nat);
+                    _1995_wat = parseFloat(data._1995_wat);
+                    _1995_cul = parseFloat(data._1995_cul);
+                    _2015_man = parseFloat(data._2015_man);
+                    _2015_nat = parseFloat(data._2015_nat);
+                    _2015_wat = parseFloat(data._2015_wat);
+                    _2015_cul = parseFloat(data._2015_cul);
+                    name = data.name;
+                 });
+                 
+    // Land Cover 1995
+     $('#wdpa_plot_1995').highcharts({
+    	 chart: {type:'bar', height: 300,
+    	 backgroundColor:'rgba(255, 255, 255, 0)',
+    	 legend: {enabled: false}
+       },
+    	 title: {text: null},
+    	 subtitle: {text: null},
+    	 credits: {
+	 enabled: false,
+	 text: '© DOPA Services',
+	 href: 'http://dopa.jrc.ec.europa.eu/en/services'
+    	 },
 	xAxis: {
-	type: 'category',
-	title: {text: null}
-	},
-	yAxis: {
-		title: {
-			text: '',
-			align: 'high'
-		},
-		labels: {
-		overflow: 'justify'
-		}
+	categories: [name]
+    	 },
+    	 yAxis: {
+	 title: { text: null },
+	 labels: {overflow: 'justify'}
+    	 },
+    	 series:[{
+		name: 'Cultivated / managed land',
+		color: '#d07a41',
+		data: [_1995_cul]
+		},{
+		name: 'Mosaic natural / managed land',
+		color: '#cca533',
+		data: [_1995_man]
+		},{
+		name: 'Natural / semi-natural land',
+		color: '#759a5d',
+		data: [_1995_nat]
+		},{
+		name: 'Water / snow and ice',
+		color: '#5976ab',
+		data: [_1995_wat]
+		}]
+     });
 
-	},
-	series:[{
-	name: 'Cultivated / managed land',
-	color: '#eecd05',
-	data: [_1995_cul]
-	},
-	{
-	name: 'Mosaic natural / managed land',
-	color: '#ee6305',
-	data: [_1995_man]
-	},
-	{
-	name: 'Natural / semi-natural land',
-	color: '#11640e',
-	data: [_1995_nat]
-	},{
-	name: 'Water / snow and ice',
-	color: '#0e4664',
-	data: [_1995_wat]
-	}
-	]
-});
-
-```
-
-- Land Cover 2015
-```
-$('#wdpa_plot_2015').highcharts({
-	chart: {type:'column', height: 300,
-	backgroundColor:'rgba(255, 255, 255, 0)',
-	legend: {enabled: false}
-	},
-	colors: ['#0e4664', '#ee6305', '#11640e', '#eecd05'],
-	title: {text: null},
-	subtitle: {text: 'Land Cover 2015'},
-	credits: {
-		enabled: false,
-		text: '',
-		href: ''
-	},
+     // Land Cover 2015
+     $('#wdpa_plot_2015').highcharts({
+    	 chart: {type:'bar', height: 300,
+    	 backgroundColor:'rgba(255, 255, 255, 0)',
+    	 legend: {enabled: false}
+    	 },
+    	 title: {text: null},
+    	 subtitle: {text: null},
+    	 credits: {
+	 enabled: false,
+	 text: '© DOPA Services',
+	 href: 'http://dopa.jrc.ec.europa.eu/en/services'
+    	 },
 	xAxis: {
-	type: 'category',
-	title: {text: null}
+	categories: [name]
 	},
-	yAxis: {
-		title: {
-			text: '',
-			align: 'high'
-		},
-		labels: {
-		overflow: 'justify'
-		}
-
-	},
-	series:[{
+    	 yAxis: {
+	 title: { text: null },
+	 labels: {overflow: 'justify'}
+    	 },
+       series:[{
 	name: 'Cultivated / managed land',
-	color: '#eecd05',
+	color: '#d07a41',
 	data: [_2015_cul]
-	},
-	{
+	},{
 	name: 'Mosaic natural / managed land',
-	color: '#ee6305',
+	color: '#cca533',
 	data: [_2015_man]
-	},
-	{
+	},{
 	name: 'Natural / semi-natural land',
-	color: '#11640e',
+	color: '#759a5d',
 	data: [_2015_nat]
 	},{
 	name: 'Water / snow and ice',
-	color: '#0e4664',
+	color: '#5976ab',
 	data: [_2015_wat]
-	}
-	]
-});
+	}]
+     });
+
+   },
+	  
+ });
+
+}
+
 
 ```
 ### Add 2 responsive div to index.html
@@ -495,7 +522,7 @@ $('#wdpa_plot_2015').highcharts({
 - add this 4 lines to the bottom of the script
 
 ```
-map.on('popupclose', function (){
+map.on('popupclose', function (){ 
 	$( "#wdpa_plot_1995" ).hide();
 	$( "#wdpa_plot_2015" ).hide();
 });
@@ -510,60 +537,3 @@ $( "#wdpa_plot_1995" ).show();
 $( "#wdpa_plot_2015" ).show();
 ```
 
-### Add Land Cover Change Chart (1995-2015)
-
-```
-var base_url_services = 'https://dopa-services.jrc.ec.europa.eu/services/d6dopa'
-var url_wdpaid_lcc = base_url_services+'/landcover/get_wdpa_lcc_esa?format=json&wdpaid=' + wdpaid;
-  $.ajax({
-	      url: url_wdpaid_lcc,
-	      dataType: 'json',
-	      success: function(d) {
-		if (d.metadata.recordCount == 0) {
-		jQuery('#sankey_basic').html('<p>No Data</p>');
-		} else {
-		var lc1_1995;
-		var lc2_2015;
-		var area;
-		var obj_array_lcc = [];
-
-		$(d.records).each(function(i, data) {
-		       lc1_1995=data.lc1_1995;
-		       lc2_2015=data.lc2_2015;
-		       area=data.area;
-		       obj_array_lcc.push([data.lc1_1995,data.lc2_2015,data.area]);
-		});
-		   google.charts.load('current', {'packages':['sankey']});
-			 google.charts.setOnLoadCallback(drawChart);
-		   function drawChart() {
-		   var data = new google.visualization.DataTable();
-		   data.addColumn('string', 'From');
-		   data.addColumn('string', 'To');
-		   data.addColumn('number', 'Area (km2)');
-		   data.addRows(obj_array_lcc);
-		   var colors = ['#538135', '#bf8f00', '#c45911', '#2f5496','#bf8f00','#538135', '#c45911', '#2f5496' ];
-		   var options = {
-		     width: 410,
-		     height: 300,
-		     sankey: {
-			node: {
-			  colors: colors,
-			  interactivity: true,
-			  labelPadding: 2,
-			  width: 5,
-			  nodePadding: 10
-			},
-			link: {colorMode: 'gradient', colors: colors }
-		      }
-		   };
-
-		if (obj_array_lcc[0][2] == 0.00001 && obj_array_lcc[1][2] == 0.00001 && obj_array_lcc[2][2] == 0.00001 && obj_array_lcc[3][2] == 0.00001 && obj_array_lcc[4][2] == 0.00001 && obj_array_lcc[5][2] == 0.00001 ) {
-		jQuery('#lcc_div').html('<br><p align="center!important">No Land Cover Change occurred in this WDPA </p><hr><br><br>');
-		}else{
-		var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
-		chart.draw(data, options);
-		}
-	 }
-      }
-   },
-});

@@ -1,6 +1,6 @@
 # Free and Open Source Geospatial Tools for Conservation Planning Workshop - FOSS4G 2018 - Dar Es Salaam
 
-## Web Gis Application Development
+## REST APIs and Web Gis Application Development
 Step by step documentation for developing a small web application that allows users to show, query and interact with geospatial data.
 
 Demo: https://lucageo.github.io/foss4g2web/

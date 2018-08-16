@@ -290,7 +290,7 @@ var wdpa_hi=L.tileLayer.wms(url, {
 	transparent: true,
 	format: 'image/png',
 	opacity:'1',
-	styles: 'protected_areas_selected ',
+	styles: 'protected_areas_selected',
 	zIndex: 44
  }).addTo(map);
 wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});

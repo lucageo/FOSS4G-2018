@@ -71,7 +71,7 @@ And Save.
 Plase download all the files, place them in a local folder and follow the intructions [here](https://github.com/lucageo/Python_rest_services)
 
 ### Download the application repository
-Plase download the repository, place it in a local folder and follow the intructions [here](https://github.com/lucageo/conservation_tools_tutorial)
+Plase download the repository, place it in a local folder [here](https://github.com/lucageo/conservation_tools_tutorial)
 
 ### Copy the following script and paste it in index.html
 Create index.html file importing all the libraries and creating a the div "map"

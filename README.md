@@ -32,7 +32,7 @@ Save pushing 'ESC' and write:
 ### GeoServer styles
 Set up two styles:
 
-1) protected_areas - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_style.xml) (Terrestrial Marine and Costal PAs)
+1) protected_areas - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_style.xml) (Simple green polygon)
 
 2) protected_areas_selected - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_select.xml) (White Line)
 

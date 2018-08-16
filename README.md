@@ -23,7 +23,7 @@ Uncomment the following lines:
     <param-value>true</param-value>
 </context-param>
 ```
-Save pushing 'ESC' and write:
+Save by pressing 'ESC' and write:
 ```
 :wq!
 ```
@@ -70,10 +70,10 @@ And Save.
 
 ### Download the REST services APIs repository
 
-Plase download all the files, place them in a local folder and follow the intructions [here](https://github.com/lucageo/Python_rest_services)
+Plase download all the files, place them in a local folder and follow the instructions [here](https://github.com/lucageo/Python_rest_services)
 
 ### Download the application repository
-Plase download the repository, place it in a local folder [here](https://github.com/lucageo/conservation_tools_tutorial)
+Please download the repository, place it in a local folder [here](https://github.com/lucageo/conservation_tools_tutorial)
 
 ### Copy the following script and paste it in index.html
 Create index.html file importing all the libraries and creating a the div "map"
@@ -206,7 +206,7 @@ var overlayMaps = {'Protected Areas': wdpa};
 
 ```
 
-### Add on click interaction with the layer to wdpa_stats.js
+### Add 'on-click' interaction with the layer to wdpa_stats.js
 
 ```
 // on click function
@@ -428,7 +428,7 @@ var url_wdpaid_lcc = 'http://localhost:8888/rest.py?type=fun&schema=public&obj=g
 
 ### Add the hide charts function to hide charts when the popup is closed to wdpa_stats.js
 
-- Add this 4 lines to the bottom of the script
+- Add these 4 lines to the bottom of the script
 
 ```
 map.on('popupclose', function (){ 
@@ -437,9 +437,9 @@ map.on('popupclose', function (){
 });
 ```
 
-### Add two boostrap responsive div to index.html
+### Add two boostrap responsive divs to index.html
 
-- In order to render the charts 2 div have to be added next to the div 'map'
+- In order to render the charts 2 divs have to be added next to the div 'map'
 
 ```
     <div class="row1">

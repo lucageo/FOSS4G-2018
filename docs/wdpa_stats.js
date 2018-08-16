@@ -34,16 +34,16 @@ map.on('click', function(e) {
 	 if (map.hasLayer(wdpa)) {
 		var latlng= e.latlng;
 		var url = getFeatureInfoUrl(
-										map,
-										wdpa,
-										e.latlng,
-										{
-												'info_format': 'text/javascript',  //it allows us to get a jsonp
-												'propertyName': ' name,wdpaid',
-												'query_layers': 'cite:wdpa ',
-												'format_options':'callback:getJson'
-										}
-								);
+					map,
+					wdpa,
+					e.latlng,
+					{
+							'info_format': 'text/javascript',  
+							'propertyName': ' name,wdpaid',
+							'query_layers': 'foss4g:wdpa ',
+							'format_options':'callback:getJson'
+					}
+			);
 			 $.ajax({
 							 jsonp: false,
 							 url: url,
@@ -68,9 +68,9 @@ map.on('click', function(e) {
 });
 
 // wdpa layer
-var url = 'http://localhost:8082/geoserver/cite/wms';
+var url = 'http://localhost:8082/geoserver/foss4g/wms';
 var wdpa=L.tileLayer.wms(url, {
-		layers: 'cite:wdpa',
+		layers: 'foss4g:wdpa',
 		transparent: true,
 		format: 'image/png',
 		opacity:'1',
@@ -108,9 +108,9 @@ var wdpa=L.tileLayer.wms(url, {
 	}
 
 // wdpa HIGLIGHTED
-	var url = 'http://localhost:8082/geoserver/cite/wms';
+	var url = 'http://localhost:8082/geoserver/foss4g/wms';
 	var wdpa_hi=L.tileLayer.wms(url, {
-		  layers: 'cite:wdpa',
+		  layers: 'foss4g:wdpa',
 			transparent: true,
 			format: 'image/png',
 			opacity:'1',
@@ -135,7 +135,6 @@ function hi_highcharts_wdpa(info,latlng){
 
 // Land Cover Change (1995-2015)
 var url_wdpaid_lcc = 'http://localhost:8888/rest.py?type=fun&schema=public&obj=get_pa_lc_1995_2015&params=(wdpaid:'+wdpaid+')';
-  //console.log(url_wdpaid_lcc);
   $.ajax({
 	      url: url_wdpaid_lcc,
 	      dataType: 'json',
@@ -250,10 +249,6 @@ map.on('popupclose', function (){ //map is the name of map you gave to your leaf
 	$( "#wdpa_plot_1995" ).hide();
 	$( "#wdpa_plot_2015" ).hide();
 });
-
-
-
-
 
 
 //Available Layers

@@ -53,10 +53,10 @@ Create a new Store (PostGIS Database type) called 'wdpa_db' with the folloing pa
 - [x] user: user
 - [x] password: user
 
-and publish the pa_lc_1995_2015 layer.
+and publish the wdpa layer.
 
-- Layer Name: pa_lc_1995_2015
-- Layer Title: pa_lc_1995_2015
+- Layer Name: wdpa
+- Layer Title: wdpa
 - Native SRS: 4326
 - Declared SRS: 4326
 
@@ -252,7 +252,7 @@ layerControl = L.control.layers(baseMaps, overlayMaps, null,  {position: 'bottom
 ```
 var url = 'https://localhost:8082/geoserver/foss4g/wms';
 var wdpa = L.tileLayer.wms(url, {
-		layers: 'foss4g:pa_lc_1995_2015',
+		layers: 'foss4g:wdpa',
 		transparent: true,
 		format: 'image/png',
 		opacity:'1',
@@ -279,7 +279,7 @@ map.on('click', function(e) {
 				e.latlng,
 			{
 			'info_format': 'text/javascript',  //it allows us to get a jsonp
-			'propertyName': ' wdpa_name,wdpaid',
+			'propertyName': 'name,wdpaid',
 			'query_layers': 'foss4g:pa_lc_1995_2015',
 			'format_options':'callback:getJson'
 			}
@@ -343,7 +343,7 @@ function getFeatureInfoUrl(map, layer, latlng, params) {
 ```
 var url = 'https://localhost:8082/geoserver/foss4g/wms';
 var wdpa_hi=L.tileLayer.wms(url, {
-	  layers: 'foss4g:pa_lc_1995_2015',
+	  layers: 'foss4g:wdpa',
 		transparent: true,
 		format: 'image/png',
 		opacity:'1',
@@ -358,15 +358,7 @@ wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
  function hi_highcharts_wdpa(info,latlng){
      var name      = info['name'];
      var wdpaid    = info['wdpaid'];
-     var _1995_nat = info['_1995_nat'];
-     var _1995_man = info['_1995_man'];
-     var _1995_cul = info['_1995_cul'];
-     var _1995_wat = info['_1995_wat'];
-     var _2015_nat = info['_2015_nat'];
-     var _2015_man = info['_2015_man'];
-     var _2015_cul = info['_2015_cul'];
-     var _2015_wat = info['_2015_wat'];
-	var popupContent = '<center><h5>'+wdpa_name+'</h5></center>';
+	var popupContent = '<center><h5>'+name+'</h5></center>';
 	var popup = L.popup()
 			 .setLatLng([latlng.lat, latlng.lng])
 			 .setContent(popupContent)

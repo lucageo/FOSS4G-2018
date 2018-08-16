@@ -196,7 +196,7 @@ var wdpa=L.tileLayer.wms(url, {
 
 ```
 
-- Add the new layer to the available layers
+- substitute the 'Available Layers' section with the following script, including now the protected areas layer
 ```
 
 var baseMaps = {"White" : light, "Esri_WorldImagery":Esri_WorldImagery};

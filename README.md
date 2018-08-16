@@ -41,6 +41,8 @@ Make sure you have a Postgis extension on youy DB, if you dont run the following
 CREATE EXTENSION postgis;
 CREATE EXTENSION postgis_topology;
 ```
+Create a new workspace called 'foss4g'
+
 Create a new Store (PostGIS Database type) called 'wdpa_db' with the folloing parameters:
 
 - [x] dbtype: postgis

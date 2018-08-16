@@ -182,7 +182,7 @@ var overlayMaps = {};
 layerControl = L.control.layers(baseMaps, overlayMaps, null,  {position: 'bottomleft'}).addTo(map);
 ```
 
-### Add the WDPA layer to wdpa_stats.js
+### Add the Protected Areas layer to wdpa_stats.js
 
 - Layer connection to geoserver WMS using tileLayer library 
 ```
@@ -280,7 +280,7 @@ function getFeatureInfoUrl(map, layer, latlng, params) {
 
 ```
 
-### Add WDPA selection layer to wdpa_stats.js and set a CQL filter
+### Add protected areas selection layer to wdpa_stats.js and set a CQL filter
 
 ```
 // wdpa HIGLIGHTED

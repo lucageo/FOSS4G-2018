@@ -18,12 +18,12 @@
         <Rule>
           <Name>rule1</Name>
           <Title>Line</Title>
-          <Abstract>A solid line with a 1 pixel width</Abstract>
+          <Abstract>A solid line with a 0.5 pixel width</Abstract>
           <LineSymbolizer>
             <Stroke>
               <CssParameter name="stroke">#ffffff</CssParameter>
               <CssParameter name="stroke-opacity">1</CssParameter>
-              <CssParameter name="stroke-width">1</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
             </Stroke>
           </LineSymbolizer>
         </Rule>

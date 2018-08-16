@@ -32,9 +32,9 @@ Save pushing 'ESC' and write:
 ### GeoServer styles
 Set up two styles:
 
-1) protected_areas - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_style.xml) (Simple green polygon)
+1) protected_areas - [xml](https://github.com/lucageo/foss4g/blob/master/protected_areas_style_style.xml) (Simple green polygon)
 
-2) protected_areas_selected - [xml](https://github.com/lucageo/foss4g/blob/master/wdpa_select.xml) (White Line)
+2) protected_areas_selected - [xml](https://github.com/lucageo/foss4g/blob/master/protected_areas_select.xml) (White Line)
 
 ### Connect Postgis with GeoServer
 

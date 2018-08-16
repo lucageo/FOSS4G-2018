@@ -2,6 +2,8 @@
 
 ## Web Gis Application Development
 Step by step documentation for developing a small web application that allows users to show, query and interact with geospatial data.
+
+Demo: https://lucageo.github.io/foss4g2web/
 _____________________________________________________________________________________
 
 ### GeoServer setup for enabling Jsonp

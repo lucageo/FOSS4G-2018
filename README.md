@@ -70,9 +70,10 @@ And Save.
 
 Plase download all the files, place them in a local folder and follow the intructions [here](https://github.com/lucageo/Python_rest_services)
 
+### Download the repository
+Plase download the repository, place it in a local folder and follow the intructions [here](https://github.com/lucageo/conservation_tools_tutorial)
 
-
-### Create the index.html file
+### Copy the following script and paste it in index.html
 Create index.html file importing all the libraries and creating a the div "map"
 ```
 <!DOCTYPE HTML>
@@ -106,124 +107,34 @@ Create index.html file importing all the libraries and creating a the div "map"
 	</body>
 </html>
 ```
-*In case of troubles, please copy this [file](https://github.com/lucageo/foss4g/blob/master/docs/steps/1/index.html)*
 
-
-### Copy the following CSS in foss4g/docs/css/custom.css
+### Copy the following script and paste it in css/custom.css
 
 ```
-#map {
-min-height: 800px;
-height: 100%;
-padding: 10px;
-}
-#banner{
-background-image: linear-gradient(to bottom right,#ffffff,#ffffff);
-padding: 10px;
-color: #4a4f51;
-box-shadow: 0px -15px 5px 0px rgba(0, 0, 0, 0), 0 3px 6px rgba(0, 0, 0, 0.07);
-position: relative;
-z-index: 9999;
-}
-#banner > img{
-width: 186px;
-float: right;
-margin-top: -45px;
-margin-right: 14px;
-}
-#sankey_basic{
-position: relative;
-z-index: 2147483647;
-background: #ffffffe8;
-display: none;
-padding: 15px;
-margin-top: -13px;
-border-top: 1px solid #e0e0e0;
-box-shadow: 8px -5px 7px 1px rgba(0, 0, 0, 0.03), 0px 2px 0px 0px rgba(255, 255, 255, 0);
-}
-#wdpa_plot_1995{
-position: relative;
-z-index: 2147483647;
-background: #ffffffe8;
-display: none;
-padding: 15px;
-margin-top: -13px;
-border-top: 1px solid #e0e0e0;
-box-shadow: 8px -5px 7px 1px rgba(0, 0, 0, 0.03), 0px 2px 0px 0px rgba(255, 255, 255, 0);
-}
-#wdpa_plot_2015{
-position: relative;
-z-index: 2147483647;
-background: #ffffffe8;
-display: none;
-padding: 15px;
-margin-top: -13px;
-border-top: 1px solid #e0e0e0;
-box-shadow: 8px -5px 7px 1px rgba(0, 0, 0, 0.03), 0px 2px 0px 0px rgba(255, 255, 255, 0);
-}
-#wdpa_plot_1995_title{
-background-color: #ffffff;
-margin-top: -17px;
-color: #261a1a;
-font-family: unset;
-font-size: 14px;
-font-weight: 100!important;
-display: none;
-margin-top: -19px;
-border-bottom: 1px solid #ebebeb;
-border-top: 1px solid #ebebeb;
-}
-#wdpa_plot_2015_title{
-background-color: #ffffff;
-margin-top: -17px;
-color: #261a1a;
-font-family: unset;
-font-size: 14px;
-font-weight: 100!important;
-display: none;
-margin-top: -19px;
-border-bottom: 1px solid #ebebeb;
-border-top: 1px solid #ebebeb;
-}
-#sankey_basic_title{
-background-color: #ffffff;
-margin-top: -17px;
-color: #261a1a;
-font-family: unset;
-font-size: 14px;
-font-weight: 100!important;
-display: none;
-margin-top: -19px;
-border-bottom: 1px solid #ebebeb;
-border-top: 1px solid #ebebeb;
-}
-.row {
-margin-right: 0px;
-margin-left: 0px;
-margin-top: -300px;
-position: relative;
-z-index: 999999;
-}
-.row1 {
-margin-right: 0px;
-margin-left: 0px;
-margin-top: -320px;
-position: relative;
-z-index: 9999;
-z-index: 99999999;
-margin-bottom: 5px;
-}
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
-background: #fffffff2!important;
-color: #516440!important;
-}
-.leaflet-popup-content-wrapper {
-border-radius: 0px!important;
-}
+#map {min-height: 800px;height: 100%;padding: 10px;}
+
+#banner{background-image: linear-gradient(to bottom right,#ffffff,#ffffff);padding: 10px;color: #4a4f51;box-shadow: 0px -15px 5px 0px rgba(0, 0, 0, 0), 0 3px 6px rgba(0, 0, 0, 0.07);position: relative;z-index: 9999;}
+
+#banner > img{width: 186px;float: right;margin-top: -45px;margin-right: 14px;}
+
+#wdpa_plot_1995{position: relative;z-index: 2147483647;background: #ffffffe8;display: none;padding: 15px;margin-top: -13px;border-top: 1px solid #e0e0e0;box-shadow: 8px -5px 7px 1px rgba(0, 0, 0, 0.03), 0px 2px 0px 0px rgba(255, 255, 255, 0);}
+
+#wdpa_plot_2015{position: relative;z-index: 2147483647;background: #ffffffe8;display: none;padding: 15px;margin-top: -13px;border-top: 1px solid #e0e0e0;box-shadow: 8px -5px 7px 1px rgba(0, 0, 0, 0.03), 0px 2px 0px 0px rgba(255, 255, 255, 0);}
+
+#wdpa_plot_1995_title{background-color: #ffffff;margin-top: -17px;color: #261a1a;font-family: unset;font-size: 14px;font-weight: 100!important;display: none;margin-top: -19px;border-bottom: 1px solid #ebebeb;border-top: 1px solid #ebebeb;}
+
+#wdpa_plot_2015_title{background-color: #ffffff;margin-top: -17px;color: #261a1a;font-family: unset;font-size: 14px;font-weight: 100!important;display: none;margin-top: -19px;border-bottom: 1px solid #ebebeb;border-top: 1px solid #ebebeb;}
+
+.row {margin-right: 0px; margin-left: 0px; margin-top: -300px; position: relative; z-index: 999999;}
+
+.row1 {margin-right: 0px; margin-left: 0px; margin-top: -320px; position: relative; z-index: 9999; z-index: 99999999; margin-bottom: 5px;}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {background: #fffffff2!important; color: #516440!important;}
+
+.leaflet-popup-content-wrapper {border-radius: 0px!important;}
 ```
 
-### wdpa_stats.js
-Create wdpa_stats.js file and add the folloing lines:
+### Copy the following scripts and paste them in wdpa_stats.js
 
 - Initialise map
 ```
@@ -382,7 +293,7 @@ var wdpa_hi=L.tileLayer.wms(url, {
  }).addTo(map);
 wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
 ```
-### Popup configuration and charts config
+### Add popup and charts configuration to wdpa_stats.js
 
 ```
 // charts function
@@ -513,7 +424,7 @@ var url_wdpaid_lcc = 'http://localhost:8888/rest.py?type=fun&schema=public&obj=g
 
 ```
 
-### Hide Charts when the popup is closed
+### Add the hide charts function to hide charts when the popup is closed to wdpa_stats.js
 
 - add this 4 lines to the bottom of the script
 
@@ -524,7 +435,7 @@ map.on('popupclose', function (){
 });
 ```
 
-### Add 2 responsive div to index.html
+### Add two boostrap responsive div to index.html
 
 - in order to render the charts 2 div have to be added next to the div 'map'
 

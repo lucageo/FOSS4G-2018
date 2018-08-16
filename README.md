@@ -282,7 +282,7 @@ map.on('click', function(e) {
 			{
 			'info_format': 'text/javascript',  //it allows us to get a jsonp
 			'propertyName': 'name,wdpaid',
-			'query_layers': 'foss4g:pa_lc_1995_2015',
+			'query_layers': 'foss4g:wdpa',
 			'format_options':'callback:getJson'
 			}
 			);

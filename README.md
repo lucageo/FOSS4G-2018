@@ -66,7 +66,7 @@ and publish the wdpa layer.
 
 And Save.
 
-### REST services Development
+### Download the REST services APIs repository
 
 Plase download all the files, place them in a local folder and follow the intructions [here](https://github.com/lucageo/Python_rest_services)
 

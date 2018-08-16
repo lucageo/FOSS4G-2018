@@ -50,7 +50,7 @@ Create a new Store (PostGIS Database type) called 'wdpa_db' with the folloing pa
 - [x] dbtype: postgis
 - [x] host: localhost
 - [x] port: 5432
-- [x] database: postgis
+- [x] database: postgres
 - [x] schema: public
 - [x] user: user
 - [x] password: user

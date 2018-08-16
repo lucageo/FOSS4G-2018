@@ -506,14 +506,12 @@ var url_wdpaid_lcc = 'http://localhost:8888/rest.py?type=fun&schema=public&obj=g
 
 ```
     <div class="row1">
-    <center><div id="wdpa_plot_1995_title" class="col-sm-4"> Land Cover 1995</div></center>
-    <center><div id="sankey_basic_title" class="col-sm-4">Land Cover Change</div></center>
-    <center><div id="wdpa_plot_2015_title" class="col-sm-4">Land Cover 2015</div></center>
+    <center><div id="wdpa_plot_1995_title" class="col-sm-6"> Land Cover 1995</div></center>
+    <center><div id="wdpa_plot_2015_title" class="col-sm-6">Land Cover 2015</div></center>
     </div>
     <div class="row">
-    <center><div id="wdpa_plot_1995" class="col-sm-4"></div></center>
-    <center><div id="sankey_basic" class="col-sm-4"></div></center>
-    <center><div id="wdpa_plot_2015" class="col-sm-4"></div></center>
+    <center><div id="wdpa_plot_1995" class="col-sm-6"></div></center>
+    <center><div id="wdpa_plot_2015" class="col-sm-6"></div></center>
     </div>
 ```
 

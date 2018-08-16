@@ -62,7 +62,7 @@ and publish the wdpa layer.
 - Native SRS: 4326
 - Declared SRS: 4326
 
-- Apply the style [protected_areas](https://github.com/lucageo/foss4g/blob/master/wdpa_style.xml)
+- Apply the style [protected_areas](https://github.com/lucageo/foss4g/blob/master/protected_areas_style.xml)
 
 And Save.
 

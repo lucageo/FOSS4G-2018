@@ -39,8 +39,8 @@ map.on('click', function(e) {
 										e.latlng,
 										{
 												'info_format': 'text/javascript',  //it allows us to get a jsonp
-												'propertyName': ' wdpa_name,wdpaid,rep_area',
-												'query_layers': 'dopa_explorer_2:wdpa_foss4g',
+												'propertyName': ' name,wdpaid',
+												'query_layers': 'cite:wdpa ',
 												'format_options':'callback:getJson'
 										}
 								);
@@ -58,7 +58,6 @@ map.on('click', function(e) {
 										var prop=data.features[0].properties;
 										var filter="wdpaid='"+prop['wdpaid']+"'";
 										wdpa_hi.setParams({CQL_FILTER:filter});
-										// m_eco_hi.setParams({CQL_FILTER:filter});
 										hi_highcharts_wdpa(prop,latlng);
 							}
 							else {}
@@ -69,12 +68,11 @@ map.on('click', function(e) {
 });
 
 // wdpa layer
-var url = 'https://lrm-maps.jrc.ec.europa.eu/geoserver/dopa_explorer_2/wms';
+var url = 'http://localhost:8082/geoserver/cite/wms';
 var wdpa=L.tileLayer.wms(url, {
-		layers: 'dopa_explorer_2:wdpa_foss4g',
+		layers: 'cite:wdpa',
 		transparent: true,
 		format: 'image/png',
-		//styles: 'terrestrial_ecoregion_protection_2018',
 		opacity:'1',
 		zIndex: 33
 	}).addTo(map);
@@ -110,22 +108,22 @@ var wdpa=L.tileLayer.wms(url, {
 	}
 
 // wdpa HIGLIGHTED
-	var url = 'https://lrm-maps.jrc.ec.europa.eu/geoserver/dopa_explorer_2/wms';
+	var url = 'http://localhost:8082/geoserver/cite/wms';
 	var wdpa_hi=L.tileLayer.wms(url, {
-		  layers: 'dopa_explorer_2:wdpa_foss4g',
+		  layers: 'cite:wdpa',
 			transparent: true,
 			format: 'image/png',
 			opacity:'1',
-			styles: 'polygon',
+			styles: 'protected_areas_selected ',
 			zIndex: 44
 	 }).addTo(map);
 wdpa_hi.setParams({CQL_FILTER:"wdpaid LIKE ''"});
 
 	// charts function
 function hi_highcharts_wdpa(info,latlng){
- var wdpa_name=info['wdpa_name'];
+ var name=info['name'];
  var wdpaid=info['wdpaid'];
- var popupContent = '<center><h5>'+wdpa_name+'</h5></center>';
+ var popupContent = '<center><h5>'+name+'</h5></center>';
  var popup = L.popup()
 	.setLatLng([latlng.lat, latlng.lng])
 	.setContent(popupContent)

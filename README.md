@@ -169,7 +169,7 @@ var topLayer =  L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/
 }).addTo(map);
 ```
 
-- declare the available layers
+- Declare the available layers
 ```
 //Available Layers
 var baseMaps = {"White" : light, "Esri_WorldImagery":Esri_WorldImagery};
@@ -198,7 +198,7 @@ var wdpa=L.tileLayer.wms(url, {
 
 ```
 
-- substitute the 'Available Layers' section with the following script, including now the protected areas layer
+- Substitute the 'Available Layers' section with the following script, including now the protected areas layer
 ```
 
 var baseMaps = {"White" : light, "Esri_WorldImagery":Esri_WorldImagery};
@@ -428,7 +428,7 @@ var url_wdpaid_lcc = 'http://localhost:8888/rest.py?type=fun&schema=public&obj=g
 
 ### Add the hide charts function to hide charts when the popup is closed to wdpa_stats.js
 
-- add this 4 lines to the bottom of the script
+- Add this 4 lines to the bottom of the script
 
 ```
 map.on('popupclose', function (){ 
@@ -439,7 +439,7 @@ map.on('popupclose', function (){
 
 ### Add two boostrap responsive div to index.html
 
-- in order to render the charts 2 div have to be added next to the div 'map'
+- In order to render the charts 2 div have to be added next to the div 'map'
 
 ```
     <div class="row1">

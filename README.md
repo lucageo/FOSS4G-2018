@@ -82,7 +82,7 @@ Create index.html file importing all the libraries and creating a the div "map"
 <html>
   <head>
    <meta charset="utf-8" />
-    <title>FOSS4G DAR ES SALAM - CONSERVATION TOOLS</title>
+    <title>FOSS4G DAR ES SALAAM - CONSERVATION TOOLS</title>
 
 		<!-- include leaflet css and javascript -->
 		    <link rel="stylesheet" href="css/leaflet.css" />

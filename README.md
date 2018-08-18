@@ -57,10 +57,10 @@ schema: public
 user: user
 password: user
 ```
-and publish the wdpa layer.
+and publish the protected_areas layer.
 
-- Layer Name: wdpa
-- Layer Title: wdpa
+- Layer Name: protected_areas
+- Layer Title: protected_areas
 - Native SRS: 4326
 - Declared SRS: 4326
 

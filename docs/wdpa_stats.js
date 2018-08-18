@@ -40,7 +40,7 @@ map.on('click', function(e) {
 					{
 							'info_format': 'text/javascript',  
 							'propertyName': ' name,wdpaid',
-							'query_layers': 'foss4g:wdpa ',
+							'query_layers': 'foss4g:protected_areas',
 							'format_options':'callback:getJson'
 					}
 			);
@@ -70,7 +70,7 @@ map.on('click', function(e) {
 // wdpa layer
 var url = 'http://localhost:8082/geoserver/foss4g/wms';
 var wdpa=L.tileLayer.wms(url, {
-		layers: 'foss4g:wdpa',
+		layers: 'foss4g:protected_areas',
 		transparent: true,
 		format: 'image/png',
 		opacity:'1',

@@ -189,7 +189,7 @@ layerControl = L.control.layers(baseMaps, overlayMaps, null,  {position: 'bottom
 // wdpa layer
 var url = 'http://localhost:8082/geoserver/foss4g/wms';
 var wdpa=L.tileLayer.wms(url, {
-		layers: 'foss4g:wdpa',
+		layers: 'foss4g:protected_areas',
 		transparent: true,
 		format: 'image/png',
 		opacity:'1',
@@ -220,7 +220,7 @@ map.on('click', function(e) {
 					{
 					'info_format': 'text/javascript',  
 					'propertyName': ' name,wdpaid',
-					'query_layers': 'foss4g:wdpa ',
+					'query_layers': 'foss4g:protected_areas ',
 					'format_options':'callback:getJson'
 					}
 			);
@@ -286,7 +286,7 @@ function getFeatureInfoUrl(map, layer, latlng, params) {
 // wdpa HIGLIGHTED
 var url = 'http://localhost:8082/geoserver/foss4g/wms';
 var wdpa_hi=L.tileLayer.wms(url, {
-	layers: 'foss4g:wdpa',
+	layers: 'foss4g:protected_areas',
 	transparent: true,
 	format: 'image/png',
 	opacity:'1',

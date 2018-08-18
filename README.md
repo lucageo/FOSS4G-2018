@@ -52,7 +52,7 @@ CREATE EXTENSION postgis_topology;
 dbtype: postgis
 host: localhost
 port: 5432
-database: postgres
+database: foss4g
 schema: public
 user: user
 password: user
